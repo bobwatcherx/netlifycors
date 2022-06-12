@@ -25,7 +25,7 @@
     <script>
         const theDate = document.getElementById('the-date');
 
-        fetch('https://chickenfacts.io/api/v1/facts.json')
+        fetch('/.netlify/functions/chickenfacts-facts')
             .then(resp => resp.json())
             .then(data => {
                 theDate.innerText = data.last_counted;
