@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>When was chickenfacts.io last updated?</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>When was chickenfacts.io last updated?</h1>
+        <h2 id="the-date">Loading...</h2>
+    </main>
+
+    <script>
+        const theDate = document.getElementById('the-date');
+
+        fetch('https://chickenfacts.io/api/v1/facts.json')
+            .then(resp => resp.json())
+            .then(data => {
+                theDate.innerText = data.last_counted;
+            });
+    </script>
+</body>
+
+</html>
