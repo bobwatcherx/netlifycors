@@ -19,17 +19,19 @@
 <body>
     <main>
         <h1>When was chickenfacts.io last updated?</h1>
-        <h2 id="the-date">Loading...</h2>
+        <p id="factDisplay"></p>
     </main>
 
     <script>
-        const theDate = document.getElementById('the-date');
+        const factDisplay = document.getElementById('factDisplay');
 
         fetch('/.netlify/functions/chickenfacts-facts')
             .then(resp => resp.json())
             .then(data => {
-                theDate.innerText = data.last_counted;
-            });
+                console.log(data);
+                factDisplay.innerText = JSON.stringify(data);
+            })
+            .catch(error => console.error('Error fetching chicken fact:', error));
     </script>
 </body>
 
